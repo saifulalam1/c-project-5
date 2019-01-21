@@ -1,0 +1,215 @@
+Problem No. 5
+/*
+saiful alam
+id : 11708041
+Dept. of cse
+*/
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+class Informatin
+{
+public:
+    int day, month,year,match,wicket,run;
+    Informatin() {}
+    Informatin(int p, int q, int r,int t, int w, int z)
+    {
+        day = p;
+        month = q;
+        year = r;
+        match=t;
+        wicket=w;
+        run=z;
+
+    }
+    void show();
+      int putyear()
+    {
+       return year;
+    }
+};
+ void Informatin::show()
+    {
+        cout<<"Date of birth : "<<day<<"."<<month<<"."<<year<<endl;
+        cout<<"Match : "<<match<<endl;
+        cout<<"Wicket : "<<wicket<<endl;
+        cout<<"Runs : "<<run<<endl;
+    }
+
+class Person
+{
+public:
+    string name;
+    Informatin Iob;
+    void getData(string name, Informatin data)
+    {
+        this->name = name;
+        Iob = data;
+    }
+    int fun()
+    {
+        return Iob.putyear();
+    }
+    void putData();
+};
+ void Person :: putData()
+    {
+        cout<<"Name : "<<name<<endl;
+        Iob.show();
+    }
+class Cricketer: public Person,public Informatin
+{
+public:
+    Informatin Iop;
+    string category;
+    void getCricketer(string na, Informatin duc, string category)
+    {
+        getData(na, duc);
+        this->category = category;
+    }
+    string getcategory()
+    {
+        return category;
+    }
+    int fun1()
+    {
+        return fun();
+    }
+    void putInfo();
+};
+ void Cricketer :: putInfo()
+    {
+        putData();
+        cout<<"Player Category : "<<category<<endl;
+    }
+int main()
+{
+    Cricketer obj[15];
+    ll c1=0,c2=0,c3=0,c4=0;
+    obj[0].getCricketer("Musfiqur_Rahim",Informatin(5,11,1992,150,0,5600), "keeper");
+    obj[1].getCricketer("Miraz_Hossain",Informatin(5,9,1996,50,70,560), "spinbowler");
+    obj[2].getCricketer("Mostafizur_Rahman",Informatin(5,10,1996,72,98,190), "fastbowler");
+    obj[3].getCricketer("Musrafi",Informatin(5,1,1996,200,205,1400), "fastbowler");
+    obj[4].getCricketer("Tamim_Iqbal",Informatin(5,11,1991,203,0,6500), "batsman");
+    obj[5].getCricketer("Imrul_kayes",Informatin(5,11,1986,135,0,3100), "batsman");
+    obj[6].getCricketer("Sakib_al Hassan",Informatin(5,11,1993,201,264,5800), "batsman");
+    obj[7].getCricketer("Mithun_Hossain",Informatin(5,11,1992,11,5,360), "batsman");
+    obj[8].getCricketer("Liton_Das",Informatin(5,12,1996,36,0,890), "keeper");
+    obj[9].getCricketer("Nasir_Hossain",Informatin(5,10,1996,120,76,2900), "batsman");
+    obj[10].getCricketer("Sabbir_Rahman",Informatin(5,9,1995,76,45,1200), "batsman");
+    obj[11].getCricketer("Mominul",Informatin(5,12,1996,43,17,630), "batsman");
+    obj[12].getCricketer("Taskin_Ahamed",Informatin(5,9,1997,65,97,134), "fastbowler");
+    obj[13].getCricketer("Rony",Informatin(5,05,1996,15,21,54), "fastbowler");
+    obj[14].getCricketer("Demon_Gus",Informatin(5,06,1995,23,0,534), "keeper");
+    Cricketer ar[8];
+    int t=0;
+    for(int i=0; i<15; i++)
+    {
+        if(obj[i].getcategory()=="keeper" && (2018-obj[i].fun1()>20) && (2018-obj[i].fun1()<30)&& c1<1)
+        {
+            ar[t] = obj[i];
+            c1++;
+            t++;
+        }
+        if(obj[i].getcategory()=="fastbowler" && (2018-obj[i].fun1()>20) && (2018-obj[i].fun1()<30) && c2<2)
+        {
+            ar[t] = obj[i];
+            c2++;
+            t++;
+        }
+        if(obj[i].getcategory()=="spinbowler" && (2018-obj[i].fun1()>20) && (2018-obj[i].fun1()<30) && c3<1)
+        {
+            ar[t] = obj[i];
+            c3++;
+            t++;
+        }
+        if(obj[i].getcategory()=="batsman"  && (2018-obj[i].fun1()>20) && (2018-obj[i].fun1()<30) && c4<4)
+        {
+            ar[t] = obj[i];
+            c4++;
+            t++;
+        }
+    }
+    ll cnt=1;
+    for(int i = 0; i < t; i++)
+    {
+        cout<<"Player No. : "<<cnt<<endl;
+        ar[i].putInfo();
+        cout<<endl;
+        cout<<endl;
+        cnt++;
+    }
+    return 0;
+}
+Sample Output
+Player No. : 1
+Name : Musfiqur_Rahim
+Date of birth : 5.11.1992
+Match : 150
+Wicket : 0
+Runs : 5600
+Player Category : keeper
+
+
+Player No. : 2
+Name : Miraz_Hossain
+Date of birth : 5.9.1996
+Match : 50
+Wicket : 70
+Runs : 560
+Player Category : spinbowler
+
+
+Player No. : 3
+Name : Mostafizur_Rahman
+Date of birth : 5.10.1996
+Match : 72
+Wicket : 98
+Runs : 190
+Player Category : fastbowler
+
+
+Player No. : 4
+Name : Musrafi
+Date of birth : 5.1.1996
+Match : 200
+Wicket : 205
+Runs : 1400
+Player Category : fastbowler
+
+
+Player No. : 5
+Name : Tamim_Iqbal
+Date of birth : 5.11.1991
+Match : 203
+Wicket : 0
+Runs : 6500
+Player Category : batsman
+
+
+Player No. : 6
+Name : Sakib_al Hassan
+Date of birth : 5.11.1993
+Match : 201
+Wicket : 264
+Runs : 5800
+Player Category : batsman
+
+
+Player No. : 7
+Name : Mithun_Hossain
+Date of birth : 5.11.1992
+Match : 11
+Wicket : 5
+Runs : 360
+Player Category : batsman
+
+
+Player No. : 8
+Name : Nasir_Hossain
+Date of birth : 5.10.1996
+Match : 120
+Wicket : 76
+Runs : 2900
+Player Category : batsman
+
